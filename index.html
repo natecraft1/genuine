@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="nateApp">
+<head>
+	<title></title>
+</head>
+<body>
+	<div ng-view>
+		
+	</div>
+<nav>
+	<ul>
+		<li><a href="#/view2"></a></li>
+	</ul>
+</nav>
+
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script>
+	var nateApp = angular.module("nateApp", ["ngRoute"]);
+	nateApp.config(function($routeProvider) {
+		$routeProvider
+			.when("/", 
+				{	controller: "HomeController",
+				 	templateUrl: "Partials/View1.html" })
+			.when("/view2",
+				{	controller: "Page2Controller",
+					templateUrl: "Partials/View2.html"})
+			.otherwise({ redirectTo: "/" });
+	});
+	var controllers = {};
+
+	controllers.HomeController = function($scope) {
+		$scope.names = [
+		{"name": "nate", "hometown": "tucson"},
+		{"name": "breastie", "hometown": "metlika"},
+		{"name": "anastasiya", "hometown": "russia"},
+		{"name": "joey", "hometown": "tucson"}];
+	}
+	controllers.Page2Controller = function($scope) {
+
+	}
+	nateApp.controller(controllers);
+</script>
+</body>
+</html>

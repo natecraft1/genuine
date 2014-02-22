@@ -1,0 +1,7 @@
+<div data-ng-controller="HomeController">
+	<input type="text" data-ng-model="name"/>
+	<div class="container"> {{ name }} </div>
+	<ul>
+		<li data-ng-repeat="n in names | filter:name | orderBy:'hometown'">{{n.name + " - " + n.hometown}}</li>
+	</ul>
+</div>
